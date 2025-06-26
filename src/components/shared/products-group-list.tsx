@@ -1,36 +1,32 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { cn } from "@/lib/utils"
-import React from 'react';
-import { ProductCard } from "./product-card"
+import { cn } from '@/lib/utils'
+import { Product } from '@prisma/client'
+import React from 'react'
+import { ProductCard } from './product-card'
 
 interface Props {
-	items: any[];
-	categoryId: number;
-	className?: string;
-	listClassName?: string;
+	items: Product[]
+	className?: string
+	listClassName?: string
 }
-
 
 export const ProductsGroupList: React.FC<Props> = ({
 	items,
-	categoryId,
 	listClassName,
 	className,
 }) => {
-  return (
-	<div className={className}>
-		<div className={cn("grid grid-cols-3 gap-6", listClassName)}>
-			{items.map((product, i) => (
-				<ProductCard 
-					key={product.id}
-					id={product.id}
-					name={product.name}
-					imageUrl={product.imageUrl}
-					price={product.price}
-				/>
-			))}
+	return (
+		<div className={className}>
+			<div className={cn('grid grid-cols-3 gap-6', listClassName)}>
+				{items.map(product => (
+					<ProductCard
+						key={product.id}
+						id={product.id}
+						name={product.name}
+						imageUrl={product.imagesUrl[0]}
+						price={product.price}
+					/>
+				))}
+			</div>
 		</div>
-	</div>
-  );
-};
+	)
+}

@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
+    provider  = "postgresql"
+    url       = env("DATABASE_URL")
+    directUrl = env("DATABASE_URL_UNPOOLED")
 }
 
 model User {
@@ -14,6 +15,7 @@ model User {
     email    String   @unique
     password String
     role     UserRole @default(USER)
+    verified DateTime
 
     provider   String?
     providerId String?
@@ -30,19 +32,36 @@ model Category {
     id       Int       @id @default(autoincrement())
     name     String    @unique
     products Product[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model Product {
     id Int @id @default(autoincrement())
 
-    name     String
-    imageUrl String
-    price    Int
+    name        String
+    imagesUrl   String[]
+    price       Int
+    description String
+
+    materials Material[]
 
     category   Category @relation(fields: [categoryId], references: [id])
     categoryId Int
 
     cartItems CartItem[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Material {
+    id Int @id @default(autoincrement())
+
+    name String
+
+    products Product[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -70,10 +89,10 @@ model CartItem {
     cart   Cart @relation(fields: [cartId], references: [id])
     cartId Int
 
-    productItem Product @relation(fields: [productId], references: [id])
-    productId   Int
+    product   Product @relation(fields: [productId], references: [id])
+    productId Int
 
-    quantity Int
+    quantity Int @default(1)
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
