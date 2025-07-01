@@ -14,7 +14,14 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='ru'>
-			<body className={cn('flex flex-col min-h-screen', robotoFont.className)}>{children}</body>
+			<body
+				className={cn(
+					'flex flex-col min-h-screen bg-background',
+					robotoFont.className
+				)}
+			>
+				{children}
+			</body>
 		</html>
 	)
 }

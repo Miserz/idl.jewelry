@@ -21,7 +21,7 @@ export const CountButton: React.FC<CountButtonProps> = ({
 	return (
 		<div
 			className={cn(
-				'relative inline-flex gap-2 items-center bg-secondary rounded-full',
+				'relative inline-flex gap-2 items-center bg-card border rounded-full',
 				size !== 'sm' && 'gap-4',
 				!loading ? 'pointer-events-auto' : 'pointer-events-none',
 				className

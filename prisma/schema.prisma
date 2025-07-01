@@ -40,10 +40,12 @@ model Category {
 model Product {
     id Int @id @default(autoincrement())
 
-    name        String
-    imagesUrl   String[]
-    price       Int
-    description String
+    name         String
+    imagesUrl    String[]
+    price        Int
+    discount     Int      @default(0)
+    description  String
+    availability Int      @default(1)
 
     materials Material[]
 

@@ -10,7 +10,7 @@ interface Props {
 export const SortPopup: React.FC<Props> = ({ className }) => {
 	return (
 		<div className={cn(
-			"inline-flex items-center gap-1 bg-[#F0F0F0] px-5 h-10 rounded-full cursor-pointer",
+			"inline-flex items-center gap-1 bg-card px-5 h-10 rounded-full cursor-pointer border",
 			className,
 			)}>
 			<ArrowUpDown size={16} />

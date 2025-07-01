@@ -21,7 +21,7 @@ export const ProductCard: React.FC<Props> = ({
 	return (
 		<Link
 			className={cn(
-				'flex flex-col gap-2 p-4 rounded-3xl hover:shadow-[0px_4px_4px_0px_rgba(0,_0,_0,_0.25)] transition-shadow duration-300 ease-in-out',
+				'flex flex-col gap-2 p-4 rounded-[24px] border ease-in-out bg-card hover:scale-102 transition-all duration-300',
 				className
 			)}
 			href={`/product/${id}`}

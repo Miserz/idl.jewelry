@@ -49,12 +49,7 @@ export const ProductInformation: React.FC<Props> = ({ product, className }) => {
 	}
 
 	return (
-		<div
-			className={cn(
-				'flex flex-col gap-4 border rounded-3xl h-fit px-6 py-4',
-				className
-			)}
-		>
+		<div className={cn('flex flex-col gap-4', className)}>
 			<Text text={product.name} size='h3' weight='bold' />
 			<Text className='text-[#737373]' text={product.description} size='p2' />
 			<Text text={`${product.price}₽`} size='h3' weight='bold' />

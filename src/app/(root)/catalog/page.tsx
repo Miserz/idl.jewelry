@@ -1,4 +1,5 @@
 import {
+	Card,
 	Container,
 	Filters,
 	ProductsGroupList,
@@ -29,11 +30,11 @@ export default async function Catalog({
 
 			<Container className='flex gap-6'>
 				{/* Фильтрация */}
-				<div className='w-3/12'>
+				<Card className='w-3/12 px-6 h-fit'>
 					<Suspense>
 						<Filters />
 					</Suspense>
-				</div>
+				</Card>
 
 				{/* Список товаров */}
 				<div className='w-9/12'>

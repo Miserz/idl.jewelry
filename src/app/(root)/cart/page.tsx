@@ -1,37 +1,50 @@
 'use client'
 
-import { CartBody, Container, CtaBlock } from '@/components/shared'
-import { useCartStore } from '@/store'
-import React from 'react'
+import {
+	Card,
+	CartListProduct,
+	CartPrice,
+	Container,
+	CtaBlock,
+} from '@/components/shared'
+import { useCart } from '@/lib'
 
 export default function Cart() {
-	const totalAmount = useCartStore(state => state.totalAmount)
-	const items = useCartStore(state => state.items)
-	const loading = useCartStore(state => state.loading)
-	const fetchCartItems = useCartStore(state => state.fetchCartItems)
-	const updateItemQuantity = useCartStore(state => state.updateItemQuantity)
-	const removeCartItem = useCartStore(state => state.removeCartItem)
-	const clearCart = useCartStore(state => state.clearCart)
-
-	React.useEffect(() => {
-		fetchCartItems()
-	}, [fetchCartItems])
+	const {
+		// totalAmount,
+		updateItemQuantity,
+		items,
+		removeCartItem,
+		loading,
+		clearCart,
+	} = useCart()
 
 	return (
-		<Container>
-			{totalAmount > 0 && (
-				<CartBody
-					totalAmount={totalAmount}
-					items={items}
-					loading={loading}
-					updateItemQuantity={updateItemQuantity}
-					removeCartItem={removeCartItem}
-					clearCart={clearCart}
-				/>
+		<Container className='flex gap-6'>
+			{items.length > 0 && (
+				<>
+					<Card className='w-7/12 h-fit px-6'>
+						<CartListProduct
+							items={items}
+							loading={loading}
+							updateItemQuantity={updateItemQuantity}
+							removeCartItem={removeCartItem}
+							clearCart={clearCart}
+						/>
+					</Card>
+					<Card className='w-5/12 h-fit px-6'>
+						<CartPrice
+							items={items}
+							totalAmount={0}
+							loading={loading}
+						/>
+					</Card>
+				</>
 			)}
 
-			{!totalAmount && (
+			{!items.length && (
 				<CtaBlock
+					className='w-full'
 					title='Корзина пуста'
 					description='Похоже, здесь пока ничего нет. Добавьте украшения, которые вам понравились!'
 					buttonText='Перейти в каталог'

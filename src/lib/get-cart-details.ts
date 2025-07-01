@@ -7,7 +7,9 @@ export type CartStateItem = {
 	quantity: number
 	name: string
 	imagesUrl: string[]
+	discount: number
 	price: number
+	availability: number
 }
 
 interface ReturnProps {
@@ -22,7 +24,9 @@ export const getCartDetails = (data: CartDTO): ReturnProps => {
 		quantity: item.quantity,
 		name: item.product.name,
 		imagesUrl: item.product.imagesUrl,
+		discount: item.product.discount,
 		price: calcTotalPrice(item),
+		availability: item.product.availability,
 	}))
 
 	return {

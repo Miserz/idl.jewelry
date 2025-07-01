@@ -30,7 +30,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
 	return (
 		<div
 			className={cn(
-				'flex flex-col gap-4 border px-6 py-4 rounded-3xl',
+				'flex flex-col gap-4',
 				className
 			)}
 		>

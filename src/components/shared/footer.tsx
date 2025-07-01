@@ -11,7 +11,7 @@ interface Props {
 
 export const Footer: React.FC<Props> = ({ className }) => {
 	return (
-		<footer className={cn("mt-40 bg-[#F0F0F0]", className)}>
+		<footer className={cn("mt-40 bg-card", className)}>
 			<Container className="flex justify-between py-12">
 				{/* Первый столбец */}
 				<ul>

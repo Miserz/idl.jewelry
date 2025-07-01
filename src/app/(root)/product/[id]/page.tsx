@@ -1,10 +1,11 @@
 import {
+	Card,
 	Container,
 	ProductImages,
 	ProductInformation,
 } from '@/components/shared'
-import { notFound } from 'next/navigation'
 import { prisma } from '@/prisma/prisma-client'
+import { notFound } from 'next/navigation'
 
 export default async function Product(props: {
 	params: Promise<{ id: string }>
@@ -21,7 +22,9 @@ export default async function Product(props: {
 		<Container className='flex gap-6'>
 			<ProductImages className='w-6/12' imagesUrl={product.imagesUrl} />
 
-			<ProductInformation product={product} className='w-6/12' />
+			<Card className='w-6/12 h-fit'>
+				<ProductInformation product={product} />
+			</Card>
 		</Container>
 	)
 }

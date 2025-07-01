@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import { Button } from '../ui'
 import { Text } from './text'
+import { Card } from "./card"
 
 interface Props {
 	title: string
@@ -18,9 +19,9 @@ export const CtaBlock: React.FC<Props> = ({
 	className,
 }) => {
 	return (
-		<div
+		<Card
 			className={cn(
-				'flex flex-col items-center gap-10 py-25 border rounded-3xl',
+				'flex flex-col items-center justify-center gap-10 h-[440px]',
 				className
 			)}
 		>
@@ -36,6 +37,6 @@ export const CtaBlock: React.FC<Props> = ({
 					<Text text={buttonText} />
 				</Button>
 			</Link>
-		</div>
+		</Card>
 	)
 }
